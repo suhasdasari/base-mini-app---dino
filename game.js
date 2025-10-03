@@ -36,23 +36,9 @@ const obstacleSpawnInterval = 90; // frames - faster spawning for more action
 // Game loop
 let gameLoop;
 
-// Initialize Farcaster SDK
+// Initialize Farcaster SDK (handled in module script)
 async function initFarcasterSDK() {
-  console.log("Attempting to initialize Farcaster SDK...");
-  console.log("SDK available:", typeof sdk !== "undefined");
-  
-  try {
-    if (typeof sdk !== "undefined" && sdk.actions) {
-      console.log("Calling sdk.actions.ready()...");
-      await sdk.actions.ready();
-      console.log("✅ Farcaster Mini App SDK initialized successfully!");
-    } else {
-      console.log("⚠️ Farcaster SDK not available, running in standalone mode");
-    }
-  } catch (error) {
-    console.log("❌ Farcaster SDK error:", error);
-    console.log("Running in standalone mode");
-  }
+  console.log("Game script loaded - SDK should already be initialized");
 }
 
 // Initialize game
@@ -323,23 +309,17 @@ document.addEventListener("keydown", (e) => {
 
 // Initialize everything when page loads
 window.addEventListener("load", async () => {
-  console.log("Window loaded, initializing app...");
+  console.log("Window loaded, initializing game...");
   
-  // Initialize Farcaster SDK first
+  // Initialize Farcaster SDK (should already be done in module)
   await initFarcasterSDK();
   
-  // Then initialize the game
+  // Initialize the game
   initGame();
 
   // High score is now displayed in the header
   highScoreElement.textContent = String(highScore).padStart(5, "0");
 });
-
-// Also try to initialize SDK immediately when script loads
-(async () => {
-  console.log("Script loaded, attempting immediate SDK initialization...");
-  await initFarcasterSDK();
-})();
 
 // Handle window resize
 window.addEventListener("resize", () => {

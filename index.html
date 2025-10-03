@@ -37,31 +37,24 @@
         !!document.getElementById("gameCanvas")
       );
     </script>
-    <script
-      src="https://unpkg.com/@farcaster/miniapp-sdk@latest/dist/index.js"
-      onload="console.log('Farcaster SDK loaded successfully')"
-      onerror="console.log('Farcaster SDK failed to load, continuing without it')"
-    ></script>
-    <script>
-      // Wait for SDK to load before initializing game
-      function waitForSDK() {
-        if (typeof sdk !== 'undefined') {
-          console.log('SDK is available, starting game initialization');
-          loadGameScript();
-        } else {
-          console.log('SDK not ready yet, waiting...');
-          setTimeout(waitForSDK, 100);
-        }
+    <script type="module">
+      // Import the Farcaster SDK properly
+      import { sdk } from 'https://unpkg.com/@farcaster/miniapp-sdk@latest/dist/index.js';
+      
+      console.log('Farcaster SDK imported successfully');
+      
+      // Initialize SDK immediately
+      try {
+        await sdk.actions.ready();
+        console.log('✅ Farcaster SDK ready!');
+      } catch (error) {
+        console.log('❌ SDK error:', error);
       }
       
-      function loadGameScript() {
-        const script = document.createElement('script');
-        script.src = 'game.js';
-        document.head.appendChild(script);
-      }
-      
-      // Start checking for SDK after a short delay
-      setTimeout(waitForSDK, 100);
+      // Load game script after SDK is ready
+      const script = document.createElement('script');
+      script.src = 'game.js';
+      document.head.appendChild(script);
     </script>
     <script>
       console.log("All scripts loaded");
