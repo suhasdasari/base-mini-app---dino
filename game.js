@@ -40,11 +40,15 @@ let gameLoop;
 async function initFarcasterSDK() {
   try {
     if (typeof sdk !== "undefined") {
+      console.log("Farcaster SDK found, initializing...");
       await sdk.actions.ready();
-      console.log("Farcaster Mini App SDK initialized");
+      console.log("Farcaster Mini App SDK initialized successfully");
+    } else {
+      console.log("Farcaster SDK not available, running in standalone mode");
     }
   } catch (error) {
-    console.log("Farcaster SDK not available, running in standalone mode");
+    console.log("Farcaster SDK error:", error);
+    console.log("Running in standalone mode");
   }
 }
 
@@ -315,8 +319,11 @@ document.addEventListener("keydown", (e) => {
 });
 
 // Initialize everything when page loads
-window.addEventListener("load", () => {
-  initFarcasterSDK();
+window.addEventListener("load", async () => {
+  // Initialize Farcaster SDK first
+  await initFarcasterSDK();
+  
+  // Then initialize the game
   initGame();
 
   // High score is now displayed in the header
