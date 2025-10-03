@@ -12,6 +12,7 @@ const highScoreElement = document.getElementById("highScore");
 const finalScoreElement = document.getElementById("finalScore");
 const startBtn = document.getElementById("startBtn");
 const restartBtn = document.getElementById("restartBtn");
+const jumpBtn = document.getElementById("jumpBtn");
 const gameOverDiv = document.getElementById("gameOver");
 
 // Game objects
@@ -158,10 +159,10 @@ function draw() {
   // Draw instructions when game is not running
   if (!gameRunning) {
     ctx.fillStyle = "#535353";
-    ctx.font = "20px Courier New";
+    ctx.font = "16px Courier New";
     ctx.textAlign = "center";
     ctx.fillText(
-      "Press SPACE to start",
+      "Tap JUMP to start!",
       canvas.width / 2,
       canvas.height / 2 - 20
     );
@@ -303,13 +304,22 @@ function startGameOnFirstInput() {
   }
 }
 
+// Jump button event listener
+jumpBtn.addEventListener("click", () => {
+  if (!gameStarted && !gameRunning) {
+    startGameOnFirstInput();
+  } else {
+    jump();
+  }
+});
+
 canvas.addEventListener("click", startGameOnFirstInput);
 canvas.addEventListener("touchstart", (e) => {
   e.preventDefault();
   startGameOnFirstInput();
 });
 
-// Keyboard support
+// Keyboard support (still works for desktop users)
 document.addEventListener("keydown", (e) => {
   if (e.code === "Space" || e.code === "ArrowUp") {
     e.preventDefault();
