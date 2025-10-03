@@ -4,15 +4,8 @@ let gameSpeed = 8;
 let score = 0;
 let highScore = localStorage.getItem("dinoHighScore") || 0;
 
-// Canvas setup
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-const scoreElement = document.getElementById("score");
-const highScoreElement = document.getElementById("highScore");
-const finalScoreElement = document.getElementById("finalScore");
-const startBtn = document.getElementById("startBtn");
-const restartBtn = document.getElementById("restartBtn");
-const gameOverDiv = document.getElementById("gameOver");
+// Canvas setup - will be initialized when DOM is ready
+let canvas, ctx, scoreElement, highScoreElement, finalScoreElement, startBtn, restartBtn, gameOverDiv;
 
 // Game objects
 const dino = {
@@ -36,6 +29,17 @@ const obstacleSpawnInterval = 90; // frames - faster spawning for more action
 // Game loop
 let gameLoop;
 
+// Initialize DOM elements
+function initDOMElements() {
+  canvas = document.getElementById("gameCanvas");
+  ctx = canvas.getContext("2d");
+  scoreElement = document.getElementById("score");
+  highScoreElement = document.getElementById("highScore");
+  finalScoreElement = document.getElementById("finalScore");
+  startBtn = document.getElementById("startBtn");
+  restartBtn = document.getElementById("restartBtn");
+  gameOverDiv = document.getElementById("gameOver");
+}
 
 // Initialize Farcaster SDK
 async function initFarcasterSDK() {
@@ -316,13 +320,46 @@ document.addEventListener("keydown", (e) => {
 });
 
 // Initialize everything when page loads
-window.addEventListener("load", () => {
+function initializeApp() {
+  console.log("Initializing app...");
+  
+  // Initialize DOM elements first
+  initDOMElements();
+  
+  // Check if elements were found
+  if (!canvas) {
+    console.error("Canvas not found!");
+    return;
+  }
+  
+  console.log("DOM elements initialized successfully");
+  
+  // Initialize Farcaster SDK
   initFarcasterSDK();
+  
+  // Initialize game
   initGame();
 
   // High score is now displayed in the header
   highScoreElement.textContent = String(highScore).padStart(5, "0");
-});
+  
+  console.log("App initialized successfully");
+}
+
+// Try multiple initialization methods for better compatibility
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  initializeApp();
+}
+
+// Fallback initialization
+setTimeout(() => {
+  if (!canvas) {
+    console.log("Fallback initialization triggered");
+    initializeApp();
+  }
+}, 500);
 
 // Handle window resize
 window.addEventListener("resize", () => {

@@ -30,10 +30,16 @@
       </div>
     </div>
 
+    <script>
+      console.log("HTML loaded, about to load scripts...");
+    </script>
     <script
       src="https://unpkg.com/@farcaster/miniapp-sdk@latest/dist/index.js"
       onerror="console.log('Farcaster SDK failed to load, continuing without it')"
     ></script>
     <script src="game.js"></script>
+    <script>
+      console.log("All scripts loaded");
+    </script>
   </body>
 </html>
