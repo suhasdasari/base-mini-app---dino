@@ -39,9 +39,30 @@
     </script>
     <script
       src="https://unpkg.com/@farcaster/miniapp-sdk@latest/dist/index.js"
+      onload="console.log('Farcaster SDK loaded successfully')"
       onerror="console.log('Farcaster SDK failed to load, continuing without it')"
     ></script>
-    <script src="game.js"></script>
+    <script>
+      // Wait for SDK to load before initializing game
+      function waitForSDK() {
+        if (typeof sdk !== 'undefined') {
+          console.log('SDK is available, starting game initialization');
+          loadGameScript();
+        } else {
+          console.log('SDK not ready yet, waiting...');
+          setTimeout(waitForSDK, 100);
+        }
+      }
+      
+      function loadGameScript() {
+        const script = document.createElement('script');
+        script.src = 'game.js';
+        document.head.appendChild(script);
+      }
+      
+      // Start checking for SDK after a short delay
+      setTimeout(waitForSDK, 100);
+    </script>
     <script>
       console.log("All scripts loaded");
     </script>
