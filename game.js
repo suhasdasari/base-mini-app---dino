@@ -36,9 +36,24 @@ const obstacleSpawnInterval = 90; // frames - faster spawning for more action
 // Game loop
 let gameLoop;
 
-// Initialize Farcaster SDK (handled in module script)
+// Initialize Farcaster SDK
 async function initFarcasterSDK() {
-  console.log("Game script loaded - SDK should already be initialized");
+  console.log("Initializing Farcaster SDK...");
+  
+  // Wait a bit for SDK to load
+  await new Promise(resolve => setTimeout(resolve, 100));
+  
+  try {
+    if (typeof sdk !== "undefined" && sdk.actions) {
+      console.log("Calling sdk.actions.ready()...");
+      await sdk.actions.ready();
+      console.log("✅ Farcaster SDK ready!");
+    } else {
+      console.log("⚠️ SDK not available, running standalone");
+    }
+  } catch (error) {
+    console.log("❌ SDK error:", error);
+  }
 }
 
 // Initialize game
@@ -311,7 +326,7 @@ document.addEventListener("keydown", (e) => {
 window.addEventListener("load", async () => {
   console.log("Window loaded, initializing game...");
   
-  // Initialize Farcaster SDK (should already be done in module)
+  // Initialize Farcaster SDK
   await initFarcasterSDK();
   
   // Initialize the game
@@ -320,6 +335,12 @@ window.addEventListener("load", async () => {
   // High score is now displayed in the header
   highScoreElement.textContent = String(highScore).padStart(5, "0");
 });
+
+// Also try to initialize immediately
+setTimeout(async () => {
+  console.log("Attempting immediate SDK initialization...");
+  await initFarcasterSDK();
+}, 200);
 
 // Handle window resize
 window.addEventListener("resize", () => {

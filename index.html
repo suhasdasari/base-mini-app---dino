@@ -37,25 +37,8 @@
         !!document.getElementById("gameCanvas")
       );
     </script>
-    <script type="module">
-      // Import the Farcaster SDK properly
-      import { sdk } from 'https://unpkg.com/@farcaster/miniapp-sdk@latest/dist/index.js';
-      
-      console.log('Farcaster SDK imported successfully');
-      
-      // Initialize SDK immediately
-      try {
-        await sdk.actions.ready();
-        console.log('✅ Farcaster SDK ready!');
-      } catch (error) {
-        console.log('❌ SDK error:', error);
-      }
-      
-      // Load game script after SDK is ready
-      const script = document.createElement('script');
-      script.src = 'game.js';
-      document.head.appendChild(script);
-    </script>
+    <script src="https://unpkg.com/@farcaster/miniapp-sdk@latest/dist/index.js"></script>
+    <script src="game.js"></script>
     <script>
       console.log("All scripts loaded");
     </script>
