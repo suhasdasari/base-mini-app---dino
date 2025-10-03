@@ -1,7 +1,7 @@
 {
   "name": "Dino Jump",
   "iconUrl": "https://your-domain.com/icon.png",
-  "homeUrl": "https://your-domain.com",
+  "homeUrl": "https://base-mini-app-dino.vercel.app/",
   "description": "A simple and addictive Dino game where you tap to jump over obstacles. Test your reflexes and see how far you can go!",
   "categories": ["game", "entertainment"],
   "tags": ["dino", "jump", "game", "arcade", "casual"],
