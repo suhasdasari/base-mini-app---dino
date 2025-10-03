@@ -4,8 +4,8 @@
   "description": "A simple Dino game Mini App for Farcaster",
   "main": "index.html",
   "scripts": {
-    "dev": "python -m http.server 8000",
-    "start": "python -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "start": "python3 -m http.server 8000",
     "build": "echo 'Static site - no build needed'",
     "vercel-build": "echo 'Static site - no build needed'"
   },
