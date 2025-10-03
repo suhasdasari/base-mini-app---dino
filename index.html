@@ -14,7 +14,7 @@
           HI <span id="highScore">00000</span> <span id="score">00000</span>
         </div>
       </div>
-      <canvas id="gameCanvas" width="800" height="400"></canvas>
+      <canvas id="gameCanvas" width="400" height="200"></canvas>
       <div class="game-controls">
         <div class="instructions">Press SPACE to start</div>
         <button id="startBtn" class="start-btn" style="display: none">
@@ -37,7 +37,22 @@
         !!document.getElementById("gameCanvas")
       );
     </script>
-    <script src="https://unpkg.com/@farcaster/miniapp-sdk@latest/dist/index.js"></script>
+    <script type="module">
+      import { sdk } from 'https://esm.sh/@farcaster/miniapp-sdk'
+      
+      // Make SDK available globally
+      window.sdk = sdk;
+      
+      console.log('Farcaster SDK loaded via ESM');
+      
+      // Initialize SDK immediately
+      try {
+        await sdk.actions.ready();
+        console.log('✅ Farcaster SDK ready!');
+      } catch (error) {
+        console.log('❌ SDK error:', error);
+      }
+    </script>
     <script src="game.js"></script>
     <script>
       console.log("All scripts loaded");

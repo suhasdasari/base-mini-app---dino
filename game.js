@@ -16,14 +16,14 @@ const gameOverDiv = document.getElementById("gameOver");
 
 // Game objects
 const dino = {
-  x: 50,
-  y: 300,
-  width: 44,
-  height: 47,
+  x: 25,
+  y: 150,
+  width: 22,
+  height: 24,
   velocityY: 0,
   grounded: true,
-  jumpPower: -12,
-  gravity: 0.6,
+  jumpPower: -8,
+  gravity: 0.4,
   color: "#535353",
   animationFrame: 0,
   isRunning: true,
@@ -64,7 +64,7 @@ function initGame() {
   obstacleSpawnTimer = 0;
 
   // Reset dino position
-  dino.y = 300;
+  dino.y = 150;
   dino.velocityY = 0;
   dino.grounded = true;
   dino.isRunning = true;
@@ -83,41 +83,41 @@ function initGame() {
 // Draw functions
 function drawDino() {
   ctx.fillStyle = dino.color;
-
-  // Draw dino body (main rectangle)
-  ctx.fillRect(dino.x + 16, dino.y + 9, 20, 20);
-
+  
+  // Draw dino body (main rectangle) - scaled down
+  ctx.fillRect(dino.x + 8, dino.y + 4, 10, 10);
+  
   // Draw dino head
-  ctx.fillRect(dino.x + 36, dino.y + 9, 8, 12);
-
+  ctx.fillRect(dino.x + 18, dino.y + 4, 4, 6);
+  
   // Draw dino eye
   ctx.fillStyle = "#f7f7f7";
-  ctx.fillRect(dino.x + 40, dino.y + 11, 2, 2);
+  ctx.fillRect(dino.x + 20, dino.y + 5, 1, 1);
   ctx.fillStyle = dino.color;
-
+  
   // Draw dino tail
-  ctx.fillRect(dino.x + 4, dino.y + 13, 12, 4);
-
-  // Draw dino legs (running animation)
+  ctx.fillRect(dino.x + 2, dino.y + 6, 6, 2);
+  
+  // Draw dino legs (running animation) - scaled down
   if (dino.isRunning) {
     dino.animationFrame++;
     if (dino.animationFrame > 20) {
       dino.animationFrame = 0;
     }
-
+    
     if (dino.animationFrame < 10) {
       // First leg position
-      ctx.fillRect(dino.x + 18, dino.y + 29, 6, 18);
-      ctx.fillRect(dino.x + 26, dino.y + 33, 6, 14);
+      ctx.fillRect(dino.x + 9, dino.y + 14, 3, 9);
+      ctx.fillRect(dino.x + 13, dino.y + 16, 3, 7);
     } else {
       // Second leg position
-      ctx.fillRect(dino.x + 18, dino.y + 33, 6, 14);
-      ctx.fillRect(dino.x + 26, dino.y + 29, 6, 18);
+      ctx.fillRect(dino.x + 9, dino.y + 16, 3, 7);
+      ctx.fillRect(dino.x + 13, dino.y + 14, 3, 9);
     }
   } else {
     // Standing position
-    ctx.fillRect(dino.x + 18, dino.y + 29, 6, 18);
-    ctx.fillRect(dino.x + 26, dino.y + 29, 6, 18);
+    ctx.fillRect(dino.x + 9, dino.y + 14, 3, 9);
+    ctx.fillRect(dino.x + 13, dino.y + 14, 3, 9);
   }
 }
 
@@ -126,22 +126,22 @@ function drawObstacles() {
   obstacles.forEach((obstacle) => {
     // Draw cactus main body
     ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-
-    // Draw cactus arms
+    
+    // Draw cactus arms - scaled down
     if (obstacle.hasArms) {
-      ctx.fillRect(obstacle.x - 6, obstacle.y + 10, 6, 12);
-      ctx.fillRect(obstacle.x + obstacle.width, obstacle.y + 10, 6, 12);
+      ctx.fillRect(obstacle.x - 3, obstacle.y + 5, 3, 6);
+      ctx.fillRect(obstacle.x + obstacle.width, obstacle.y + 5, 3, 6);
     }
   });
 }
 
 function drawGround() {
   ctx.fillStyle = "#f7f7f7";
-  ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
+  ctx.fillRect(0, canvas.height - 10, canvas.width, 10);
 
   // Draw ground line
   ctx.fillStyle = "#535353";
-  ctx.fillRect(0, canvas.height - 20, canvas.width, 2);
+  ctx.fillRect(0, canvas.height - 10, canvas.width, 1);
 }
 
 function draw() {
@@ -175,7 +175,7 @@ function updateDino() {
   dino.y += dino.velocityY;
 
   // Ground collision
-  const groundY = canvas.height - 20 - dino.height;
+  const groundY = canvas.height - 10 - dino.height;
   if (dino.y >= groundY) {
     dino.y = groundY;
     dino.velocityY = 0;
@@ -213,9 +213,9 @@ function updateObstacles() {
 function spawnObstacle() {
   const obstacle = {
     x: canvas.width,
-    y: canvas.height - 20 - 47,
-    width: 17,
-    height: 47,
+    y: canvas.height - 10 - 24,
+    width: 8,
+    height: 24,
     color: "#535353",
     hasArms: Math.random() > 0.5, // Randomly add cactus arms
   };
