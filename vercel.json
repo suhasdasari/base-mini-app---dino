@@ -6,6 +6,13 @@
       "use": "@vercel/static"
     }
   ],
+  "redirects": [
+    {
+      "source": "/.well-known/farcaster.json",
+      "destination": "https://api.farcaster.xyz/miniapps/hosted-manifest/0199ac2b-065f-6f1e-2621-cc20d930d4ae",
+      "permanent": false
+    }
+  ],
   "routes": [
     {
       "src": "/game.js",
