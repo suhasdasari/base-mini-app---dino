@@ -1,17 +1,23 @@
 {
-  "name": "Dino",
-  "iconUrl": "https://base-mini-app-dino.vercel.app/DinoLogo.png",
-  "homeUrl": "https://base-mini-app-dino.vercel.app/",
-  "description": "A simple and addictive Dino game where you tap to jump over obstacles. Test your reflexes and see how far you can go!",
-  "categories": ["game", "entertainment"],
-  "tags": ["dino", "jump", "game", "arcade", "casual"],
-  "version": "1.0.0",
-  "developer": {
-    "name": "Suhas Dasari",
-    "url": "https://s4d3.com"
-  },
-  "screenshots": [
-    "https://base-mini-app-dino.vercel.app/S1.png",
-    "https://base-mini-app-dino.vercel.app/S2.png"
-  ]
+  "frame": {
+    "name": "Dino",
+    "version": "1.0.0",
+    "iconUrl": "https://base-mini-app-dino.vercel.app/DinoLogo.png",
+    "homeUrl": "https://base-mini-app-dino.vercel.app/",
+    "imageUrl": "https://base-mini-app-dino.vercel.app/S1.png",
+    "splashImageUrl": "https://base-mini-app-dino.vercel.app/DinoLogo.png",
+    "splashBackgroundColor": "#f7f7f7",
+    "subtitle": "Jump now to cross the obstacle",
+    "description": "A similar version to Chrome Dino, this is for Base Mini Apps. Tap to jump over obstacles and test your reflexes!",
+    "primaryCategory": "games",
+    "screenshotUrls": [
+      "https://base-mini-app-dino.vercel.app/S1.png",
+      "https://base-mini-app-dino.vercel.app/S2.png"
+    ],
+    "tags": ["dino", "jump", "game", "arcade", "casual", "chrome", "base"],
+    "developer": {
+      "name": "Suhas Dasari",
+      "url": "https://s4d3.com"
+    }
+  }
 }
