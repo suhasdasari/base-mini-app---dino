@@ -39,10 +39,10 @@ let gameLoop;
 // Initialize Farcaster SDK
 async function initFarcasterSDK() {
   console.log("Initializing Farcaster SDK...");
-  
+
   // Wait a bit for SDK to load
-  await new Promise(resolve => setTimeout(resolve, 100));
-  
+  await new Promise((resolve) => setTimeout(resolve, 100));
+
   try {
     if (typeof sdk !== "undefined" && sdk.actions) {
       console.log("Calling sdk.actions.ready()...");
@@ -83,28 +83,28 @@ function initGame() {
 // Draw functions
 function drawDino() {
   ctx.fillStyle = dino.color;
-  
+
   // Draw dino body (main rectangle) - scaled down
   ctx.fillRect(dino.x + 8, dino.y + 4, 10, 10);
-  
+
   // Draw dino head
   ctx.fillRect(dino.x + 18, dino.y + 4, 4, 6);
-  
+
   // Draw dino eye
   ctx.fillStyle = "#f7f7f7";
   ctx.fillRect(dino.x + 20, dino.y + 5, 1, 1);
   ctx.fillStyle = dino.color;
-  
+
   // Draw dino tail
   ctx.fillRect(dino.x + 2, dino.y + 6, 6, 2);
-  
+
   // Draw dino legs (running animation) - scaled down
   if (dino.isRunning) {
     dino.animationFrame++;
     if (dino.animationFrame > 20) {
       dino.animationFrame = 0;
     }
-    
+
     if (dino.animationFrame < 10) {
       // First leg position
       ctx.fillRect(dino.x + 9, dino.y + 14, 3, 9);
@@ -126,7 +126,7 @@ function drawObstacles() {
   obstacles.forEach((obstacle) => {
     // Draw cactus main body
     ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-    
+
     // Draw cactus arms - scaled down
     if (obstacle.hasArms) {
       ctx.fillRect(obstacle.x - 3, obstacle.y + 5, 3, 6);
@@ -325,10 +325,10 @@ document.addEventListener("keydown", (e) => {
 // Initialize everything when page loads
 window.addEventListener("load", async () => {
   console.log("Window loaded, initializing game...");
-  
+
   // Initialize Farcaster SDK
   await initFarcasterSDK();
-  
+
   // Initialize the game
   initGame();
 

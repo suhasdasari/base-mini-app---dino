@@ -38,19 +38,19 @@
       );
     </script>
     <script type="module">
-      import { sdk } from 'https://esm.sh/@farcaster/miniapp-sdk'
-      
+      import { sdk } from "https://esm.sh/@farcaster/miniapp-sdk";
+
       // Make SDK available globally
       window.sdk = sdk;
-      
-      console.log('Farcaster SDK loaded via ESM');
-      
+
+      console.log("Farcaster SDK loaded via ESM");
+
       // Initialize SDK immediately
       try {
         await sdk.actions.ready();
-        console.log('✅ Farcaster SDK ready!');
+        console.log("✅ Farcaster SDK ready!");
       } catch (error) {
-        console.log('❌ SDK error:', error);
+        console.log("❌ SDK error:", error);
       }
     </script>
     <script src="game.js"></script>

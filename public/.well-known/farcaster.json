@@ -1,6 +1,6 @@
 {
-  "name": "Dino Jump",
-  "iconUrl": "https://base-mini-app-dino.vercel.app/icon.png",
+  "name": "Dino",
+  "iconUrl": "https://base-mini-app-dino.vercel.app/DinoLogo.png",
   "homeUrl": "https://base-mini-app-dino.vercel.app/",
   "description": "A simple and addictive Dino game where you tap to jump over obstacles. Test your reflexes and see how far you can go!",
   "categories": ["game", "entertainment"],
@@ -11,7 +11,7 @@
     "url": "https://s4d3.com"
   },
   "screenshots": [
-    "https://base-mini-app-dino.vercel.app/screenshot1.png",
-    "https://base-mini-app-dino.vercel.app/screenshot2.png"
+    "https://base-mini-app-dino.vercel.app/S1.png",
+    "https://base-mini-app-dino.vercel.app/S2.png"
   ]
 }
