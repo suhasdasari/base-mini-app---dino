@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dino Jump - Mini App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="game-header">
+        <h1>DINO</h1>
+        <div class="score">
+          HI <span id="highScore">00000</span> <span id="score">00000</span>
+        </div>
+      </div>
+      <canvas id="gameCanvas" width="800" height="400"></canvas>
+      <div class="game-controls">
+        <div class="instructions">Press SPACE to start</div>
+        <button id="startBtn" class="start-btn" style="display: none">
+          START
+        </button>
+        <button id="restartBtn" class="restart-btn" style="display: none">
+          RESTART
+        </button>
+      </div>
+      <div id="gameOver" class="game-over" style="display: none">
+        <h2>Game Over!</h2>
+        <p>Final Score: <span id="finalScore">0</span></p>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/@farcaster/miniapp-sdk@latest/dist/index.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>

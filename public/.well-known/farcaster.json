@@ -1,0 +1,17 @@
+{
+  "name": "Dino Jump",
+  "iconUrl": "https://your-domain.com/icon.png",
+  "homeUrl": "https://your-domain.com",
+  "description": "A simple and addictive Dino game where you tap to jump over obstacles. Test your reflexes and see how far you can go!",
+  "categories": ["game", "entertainment"],
+  "tags": ["dino", "jump", "game", "arcade", "casual"],
+  "version": "1.0.0",
+  "developer": {
+    "name": "Your Name",
+    "url": "https://your-website.com"
+  },
+  "screenshots": [
+    "https://your-domain.com/screenshot1.png",
+    "https://your-domain.com/screenshot2.png"
+  ]
+}
